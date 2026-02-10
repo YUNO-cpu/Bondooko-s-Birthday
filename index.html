@@ -8,42 +8,43 @@
 </head>
 <body>
 
-<div class="letter-popup hidden" id="letterPopup">
-  
-  <div class="envelope" onclick="openEnvelope()">
-    <img src="letterbox.png" class="envelope-img" alt="Envelope">
+<div class="letter-paper" id="letterPaper">
+  <div class="letter-content">
+    <div class="letter-page active">
+      <p>Happy Birthday, Bondooko</p>
+      <br>
+      <p>Even though it hasn't been long, 
+      I'm truly glad I got to meet you.</p>
+    </div>
 
-    <div class="letter-paper" id="letterPaper">
-      
-      <div class="letter-page active">
-        <p>Happy Birthday, Bondooko<br><br>
-        Even though it hasn't been long, 
-        I'm truly glad I got to meet you.<br><br>
-        Talking to you has honestly become
-        one of my favorite parts of my day lately.</p>
-      </div>
+    <div class="letter-page">
+      <p>Talking to you has honestly become 
+      one of my favorite parts of my day lately.</p>
+      <br>
+      <p>Sometimes I catch myself thinking 
+      about what it would be like 
+      to spend an unplanned day with you in person.</p>
+    </div>
 
-      <div class="letter-page">
-        <p>Sometimes I catch myself thinking
-        about what it would be like
-        to spend unplanned day with you in person.<br><br>
-        Just sitting somewhere, feeling truly alive,
-        talking random things and laughing like we usually do.<br><br>
-        It's a small thought, yet it stays in my mind longer than I expect.</p>
-      </div>
+    <div class="letter-page">
+      <p>Just sitting somewhere, feeling truly alive, 
+      talking random things and laughing like we usually do.</p>
+      <br>
+      <p>It's a small thought, yet it stays in my mind longer than I expect.</p>
+    </div>
 
-      <div class="letter-page">
-        <p>I wasn’t even sure if I should make this,
-        but I still wanted to do something for you today.<br><br>
-        So I made this little thing, just for you.
-        I hope it makes you smile, even just a little :)</p>
-      </div>
-
-      <button class="next-btn" id="nextBtn" onclick="nextPage(event)">Next</button>
+    <div class="letter-page">
+      <p>I wasn’t even sure if I should make this, 
+      but I still wanted to do something for you today.</p>
+      <br>
+      <p>So I made this little thing, just for you. 
+      I hope it makes you smile, even just a little :)</p>
     </div>
   </div>
-
+  <button class="next-btn" id="nextBtn" onclick="nextPage(event)">Next</button>
 </div>
+</div>
+  </div>
 
 <script src="script.js"></script>
 </body>
