@@ -1,6 +1,5 @@
 // STEP 1 → 2
 setTimeout(() => {
-  document.getElementById("cardScreen").style.display = "none";
   document.getElementById("boxScreen").classList.remove("hidden");
 }, 4000);
 
