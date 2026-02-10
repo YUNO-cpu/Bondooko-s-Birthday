@@ -475,20 +475,27 @@
             }
         }
 
-        function nextSong() {
-            currentSongIndex = (currentSongIndex + 1) % songs.length;
-            currentTime = 0;
-            progressBar.style.width = '0%';
-            updateDisplay();
-        }
+       function resetTimer() {
+    clearInterval(progressInterval);
+    currentTime = 0;
+    progressBar.style.width = '0%';
+    currentTimeEl.textContent = "0:00";
+    if (isPlaying) {
+        progressInterval = setInterval(updateProgress, 100);
+    }
+}
 
-        function prevSong() {
-            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-            currentTime = 0;
-            progressBar.style.width = '0%';
-            updateDisplay();
-        }
+function nextSong() {
+    currentSongIndex = (currentSongIndex + 1) % songs.length;
+    updateDisplay();
+    resetTimer();
+}
 
+function prevSong() {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    updateDisplay();
+    resetTimer();
+}
         function skipTime(seconds) {
             const song = songs[currentSongIndex];
             currentTime = Math.max(0, Math.min(currentTime + seconds, song.duration));
