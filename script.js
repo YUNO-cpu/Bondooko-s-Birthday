@@ -5,8 +5,14 @@ setTimeout(() => {
 }, 4000);
 
 function openLetter() {
-  document.getElementById("letterPopup").classList.remove("hidden");
-  document.querySelector(".envelope").classList.add("open");
+  const popup = document.getElementById("letterPopup");
+  const envelope = document.querySelector(".envelope");
+
+  popup.classList.remove("hidden"); // popup гарна (envelope харагдана)
+
+  setTimeout(() => {
+    envelope.classList.add("open"); // дараа нь захиа гарна
+  }, 300);
 }
 
 let currentPage = 0;
