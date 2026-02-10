@@ -1,12 +1,12 @@
-// 4 секундийн дараа popup гарна
+// 3 секундийн дараа popup гарна
 setTimeout(() => {
   const popup = document.getElementById("letterPopup");
-  popup.classList.remove("hidden");
-}, 4000);
+  if (popup) popup.classList.remove("hidden");
+}, 3000);
 
 // Дугтуй нээх
 function openEnvelope() {
-  const envelope = document.querySelector(".envelope");
+  const envelope = document.getElementById("envelope");
   if (!envelope.classList.contains("open")) {
     envelope.classList.add("open");
   }
@@ -21,15 +21,16 @@ function nextPage(event) {
   // Энэ нь дугтуйг дахин дарахаас (click bubbling) сэргийлнэ
   event.stopPropagation(); 
 
-  pages[currentPage].classList.remove("active");
-  currentPage++;
-
-  if (currentPage < pages.length) {
+  if (currentPage < pages.length - 1) {
+    pages[currentPage].classList.remove("active");
+    currentPage++;
     pages[currentPage].classList.add("active");
+
     if (currentPage === pages.length - 1) {
       nextBtn.innerText = "Done";
     }
   } else {
+    // Бүх хуудас дуусахад music.html руу үсэрнэ
     window.location.href = "music.html";
   }
 }
