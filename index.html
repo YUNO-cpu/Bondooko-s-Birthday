@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="letter-popup hidden" id="letterPopup">
+  
   <div class="envelope" onclick="openEnvelope()">
-    <img src="letterbox.png" class="envelope-img">
+    <img src="letterbox.png" class="envelope-img" alt="Envelope">
 
     <div class="letter-paper" id="letterPaper">
+      
       <div class="letter-page active">
         <p>Happy Birthday, Bondooko<br><br>
         Even though it hasn't been long, 
@@ -36,12 +39,12 @@
         I hope it makes you smile, even just a little :)</p>
       </div>
 
-      <button class="next-btn" id="nextBtn" onclick="nextPage()">Next</button>
+      <button class="next-btn" id="nextBtn" onclick="nextPage(event)">Next</button>
     </div>
   </div>
+
 </div>
 
 <script src="script.js"></script>
 </body>
 </html>
-
