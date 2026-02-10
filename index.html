@@ -1,67 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Birthday Letter</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Special+Elite&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
 <body>
+  <div class="container">
 
-<div class="container">
+    <!-- 1. Birthday card -->
+    <h1 id="card" class="title">Happy Birthday, bor oo 🤍</h1>
 
-  <h1 class="title">
-  <span>Happy</span>
-  <span>Birthday</span>
-</h1>
+    <!-- 2. Letter box -->
+    <img src="letterbox.png" id="box" class="box hidden" onclick="openBox()">
 
-  <!-- Gift box image -->
-  <img src="box.png" class="gift hidden" id="gift" onclick="openLetter()">
+    <!-- 3. Popup letter -->
+    <div id="popup" class="popup hidden">
+      <div class="letter">
 
-  <!-- Letter paper -->
-  <div class="letter" id="letter">
+        <div class="page active">
+          <p>Happy Birthday 🎂<br><br>
+          I’m really glad I met you.</p>
+        </div>
 
-    <div class="page active">
-      <p>
-        Happy Birthday 🎂<br><br>
-        I know we haven’t known each other for that long,
-            but I’m really glad that I met you.<br><br>
-        
-         Talking to you has honestly become one of my favorite parts of my day lately.
-         I don’t even realize how much I was waiting for your reply
-          until it’s already there.
-      </p>
+        <div class="page">
+          <p>
+          Sometimes I imagine celebrating with you.
+          Just talking and laughing.
+          </p>
+        </div>
+
+        <div class="page">
+          <p>
+          I made this just for you.<br>
+          I hope you smile :)
+          </p>
+        </div>
+
+        <span class="next" onclick="nextPage()">Next →</span>
+        <span class="done hidden" onclick="goMusic()">Done</span>
+
+      </div>
     </div>
 
-    <div class="page">
-      <p>
-        Sometimes I catch myself thinking about what it would be like
-            to celebrate this day with you in person one day.
-            Not in a big or dramatic way,
-            just sitting somewhere, sharing a drink,
-            talking about random things and laughing like we usually do.<br><br>
-
-            It’s kind of a small thought,
-            but it stays in my mind longer than I expect.
-      </p>
-    </div>
-
-    <div class="page">
-      <p>
-        I wasn’t even sure if I should make this,
-            but I still wanted to do something for you today.
-            So I made this small thing, just for you.<br><br>
-
-            I hope it makes you smile, even a little :)
-      </p>
-    </div>
-
-    <span class="next" onclick="nextPage()">Next →</span>
   </div>
-
-</div>
 
 <script src="script.js"></script>
 </body>
-</html>
+
