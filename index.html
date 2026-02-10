@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-</head>
 <body>
+  <div class="container">
+    <h1 class="title">Happy Birthday, bor oo 🤍</h1>
 
-<div class="main">
-  <h1>Happy Birthday</h1>
-  <p>I made something small for you</p>
-  <button onclick="openCard()">Open</button>
-</div>
-
-<div class="overlay" id="overlay">
-  <div class="card">
-    <span class="close" onclick="closeCard()">×</span>
-    <p>
-      Happy Birthday 🎂<br><br>
-
-I know we haven’t known each other for that long,
+    <div class="envelope" onclick="openLetter()">
+      <div class="envelope-top"></div>
+      <div class="letter" id="letter">
+        <p>
+         I know we haven’t known each other for that long,
 but I’m really glad that I met you.<br><br>
 
 Talking to you has honestly become one of my favorite parts of my day lately.
@@ -43,10 +29,10 @@ So I made this small thing, just for you.<br><br>
 
 I hope it makes you smile, even a little :)
 
-    </p>
+        </p>
+      </div>
+    </div>
   </div>
-</div>
 
 <script src="script.js"></script>
 </body>
-</html>
