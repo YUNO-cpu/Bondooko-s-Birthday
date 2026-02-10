@@ -122,31 +122,32 @@
             gap: 20px;
         }
 
-       .reel {
-    /* Утсан дээр 60px-ээс багагүй, том дэлгэц дээр 120px-ээс ихгүй */
-    width: clamp(60px, 18vw, 120px);
-    height: clamp(60px, 18vw, 120px);
+      .reel {
+    width: clamp(80px, 20vw, 120px); /* Утсан дээр арай томорсон */
+    height: clamp(80px, 20vw, 120px);
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #e8e8e8, #a8a8a8 50%, #707070);
     position: relative;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5),
-                inset 0 2px 5px rgba(255,255,255,0.5);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     border: 3px solid #888;
     flex-shrink: 0;
+    /* Төвд нь байлгахын тулд нэмэв */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-        .reel::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle at 30% 30%, #555, #222);
-            border-radius: 50%;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
-        }
+       /* Голын жижиг хар тойрог - Шүдний дээр харагдах ёстой */
+.reel::before {
+    content: '';
+    position: absolute;
+    width: 35%; 
+    height: 35%;
+    background: radial-gradient(circle at 30% 30%, #555, #222);
+    border-radius: 50%;
+    z-index: 5; /* Шүдний дээр гаргана */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+}
         
         .reel::after {
             content: '';
@@ -162,22 +163,28 @@
 
        /* Update these specific sections in your <style> tag */
 
-/* --- Шинэ зассан арааны код --- */
 .reel-teeth {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    z-index: 2;
+    /* Эргэлтийн төвийг яг голд нь түгжих */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tooth {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 7%;
-    height: 95%; /* Арааны хүрээнд тааруулсан */
+    /* Шүдний хэмжээг илүү тод, том болгов */
+    width: 10%; 
+    height: 90%; 
     background: transparent;
+    /* Төвөөс зөрөхөөс бүрэн сэргийлнэ */
+    left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
 }
 
@@ -186,21 +193,23 @@
     content: '';
     position: absolute;
     width: 100%;
-    height: 25%; /* Шүдний урт */
-    background: #333; /* Шүдний өнгө */
+    height: 22%; /* Шүдний урт */
+    background: #333;
     left: 0;
+    border-radius: 2px;
 }
 
 .tooth::before { top: 0; }
 .tooth::after { bottom: 0; }
 
+/* 4 элемент = 8 шүд (45 градусын зайтай) */
 .tooth:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
 .tooth:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg); }
 .tooth:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg); }
 .tooth:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg); }
 
 .tooth:nth-child(n+5) { display: none; }
-/* ---------------------------- */
+          
         .reel.spinning .reel-teeth {
             animation: spin 2s linear infinite;
         }
