@@ -1,19 +1,16 @@
-// STEP 1 → 2
+// 4 секундийн дараа popup гарна
 setTimeout(() => {
-  document.getElementById("boxScreen").classList.remove("hidden");
+  const popup = document.getElementById("letterPopup");
+  popup.classList.remove("hidden");
 }, 4000);
 
-function openLetter() {
-  const popup = document.getElementById("letterPopup");
+// envelope дээр дарахад захиа гарна
+function openEnvelope() {
   const envelope = document.querySelector(".envelope");
-
-  popup.classList.remove("hidden"); // popup гарна (envelope харагдана)
-
-  setTimeout(() => {
-    envelope.classList.add("open"); // дараа нь захиа гарна
-  }, 300);
+  envelope.classList.add("open");
 }
 
+// page солих логик (энэхэвээрээ)
 let currentPage = 0;
 const pages = document.querySelectorAll(".letter-page");
 const nextBtn = document.getElementById("nextBtn");
@@ -32,4 +29,3 @@ function nextPage() {
     window.location.href = "music.html";
   }
 }
-
