@@ -162,38 +162,45 @@
 
        /* Update these specific sections in your <style> tag */
 
+/* --- Шинэ зассан арааны код --- */
 .reel-teeth {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-          
-.tooth {
-    position: absolute;
-    width: 5%; 
-    height: 28%; 
-    background: #333;
-    top: 50%;
-    left: 50%;
-    transform-origin: 0 0;
-    margin-top: -14%; /* Өндрийн хагас */
-    margin-left: -2.5%; /* Өргөний хагас */
 }
 
-/* Араануудын байрлал (Том жижиг дэлгэцэнд автоматаар таарна) */
-.tooth:nth-child(1) { transform: rotate(0deg) translateY(-110%); }
-.tooth:nth-child(2) { transform: rotate(45deg) translateY(-110%); }
-.tooth:nth-child(3) { transform: rotate(90deg) translateY(-110%); }
-.tooth:nth-child(4) { transform: rotate(135deg) translateY(-110%); }
-.tooth:nth-child(5) { transform: rotate(180deg) translateY(-110%); }
-.tooth:nth-child(6) { transform: rotate(225deg) translateY(-110%); }
-.tooth:nth-child(7) { transform: rotate(270deg) translateY(-110%); }
-.tooth:nth-child(8) { transform: rotate(315deg) translateY(-110%); }
+.tooth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7%;
+    height: 95%; /* Арааны хүрээнд тааруулсан */
+    background: transparent;
+    transform: translate(-50%, -50%);
+}
+
+.tooth::before,
+.tooth::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 25%; /* Шүдний урт */
+    background: #333; /* Шүдний өнгө */
+    left: 0;
+}
+
+.tooth::before { top: 0; }
+.tooth::after { bottom: 0; }
+
+.tooth:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
+.tooth:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg); }
+.tooth:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg); }
+.tooth:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg); }
+
+.tooth:nth-child(n+5) { display: none; }
+/* ---------------------------- */
         .reel.spinning .reel-teeth {
             animation: spin 2s linear infinite;
         }
