@@ -12,23 +12,46 @@ function openEnvelope() {
   }
 }
 
-// Захианы хуудас солих
+// Захианы хуудас солих логик
 let currentPage = 0;
 const pages = document.querySelectorAll(".letter-page");
 const nextBtn = document.getElementById("nextBtn");
+const backBtn = document.getElementById("backBtn");
+
+function updateButtons() {
+  // Эхний хуудас бол Back-ыг нууна
+  if (backBtn) {
+    backBtn.style.display = (currentPage === 0) ? "none" : "inline-block";
+  }
+  
+  // Сүүлийн хуудас бол Next-ийг Done болгоно
+  if (nextBtn) {
+    nextBtn.innerText = (currentPage === pages.length - 1) ? "Done" : "Next";
+  }
+}
 
 function nextPage(event) {
-  event.stopPropagation(); 
-
+  event.stopPropagation(); // Дугтуйг дахин дарагдахаас сэргийлнэ
   if (currentPage < pages.length - 1) {
     pages[currentPage].classList.remove("active");
     currentPage++;
     pages[currentPage].classList.add("active");
-
-    if (currentPage === pages.length - 1) {
-      nextBtn.innerText = "Done";
-    }
+    updateButtons();
   } else {
+    // Бүх хуудас дуусахад шилжих
     window.location.href = "music.html";
   }
 }
+
+function prevPage(event) {
+  event.stopPropagation();
+  if (currentPage > 0) {
+    pages[currentPage].classList.remove("active");
+    currentPage--;
+    pages[currentPage].classList.add("active");
+    updateButtons();
+  }
+}
+
+// Анх ачааллахад товчлуурын төлвийг шалгах
+updateButtons();
