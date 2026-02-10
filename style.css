@@ -24,8 +24,8 @@ body {
 .envelope {
   transform: scale(0.9);
   position: relative;
-  width: 300px;
-  height: 820px;
+  width: 600px;
+  height: 1640px;
 }
 
 .envelope-img {
