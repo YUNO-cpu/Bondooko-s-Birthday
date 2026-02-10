@@ -36,47 +36,62 @@ body {
   z-index: 2; /* Захианаасаа дээгүүр харагдана */
 }
 
-/* LETTER ANIMATION */
 .letter-paper {
   position: absolute;
-  width: 340px; /* Дугтуйнаасаа арай нарийн */
-  height: 400px; /* Захианы урт */
-  background: #fdf5e6 url("letterpaper.jpg") center/cover; /* Зураг ачааллахгүй бол цайвар шар өнгө */
-  padding: 30px;
+  width: 340px; 
+  height: 480px; /* Урт текст багтаахын тулд өндөр болгов */
+  background: #fdf5e6 url("letterpaper.jpg") center/cover;
+  padding: 35px 25px;
   box-sizing: border-box;
-  left: 30px;
-  top: 0;
-  z-index: 1; /* Эхлээд дугтуйн ард байна */
-  transform: translateY(50px); /* Дугтуй дотор нуугдсан байрлал */
+  left: 10px;
+  top: 10px;
+  z-index: 1;
   opacity: 0;
-  transition: transform 1s ease, opacity 0.8s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Текстийг дээрээс нь эхлүүлнэ */
+  align-items: center;
+  border-radius: 5px;
 }
 
-/* Захиа дээшээ гарч ирэх */
+/* Нээгдэх үед голлуулах тохиргоо */
 .envelope.open .letter-paper {
-  transform: translateY(-250px); /* Дээшээ сугарч гарч ирэх хэмжээ */
   opacity: 1;
-  z-index: 3; /* Дугтуйнхаа дээр гарч ирнэ */
+  z-index: 20;
+  transform: translate(-50%, -50%) scale(1.1); /* Дэлгэцийн яг төвд */
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin: 0; 
 }
 
-.letter-page { 
-  display: none; 
-  font-size: 16px;
-  line-height: 1.5;
-  color: #444;
+/* --- Зассан хэсэг --- */
+.letter-page {
+  display: none; /* Эхлээд бүх хуудсыг нууна */
+  text-align: center; /* Текстийг голлуулна */
+  font-size: 18px;
+  line-height: 1.6;
+  color: #4b3621;
+  font-style: italic;
 }
-.letter-page.active { display: block; }
 
+.letter-page.active { 
+  display: block; /* Зөвхөн идэвхтэй хуудсыг харуулна */
+}
+
+/* Товчлуурыг захиан дотор аятайхан харагдуулах */
 .next-btn {
   position: absolute;
-  bottom: 15px;
-  right: 25px;
-  background: #8b4513; /* Товчлуурыг харагддаг болгов */
+  bottom: 20px; /* Доороос нь зай авна */
+  right: 20px;
+  background: #8b4513;
   color: white;
   border: none;
-  padding: 5px 15px;
-  border-radius: 5px;
+  padding: 8px 18px;
+  border-radius: 20px; /* Бөөрөнхий болговол илүү гоё */
   font-size: 14px;
   cursor: pointer;
+  z-index: 21; /* Текстээсээ дээгүүр байх */
 }
