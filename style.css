@@ -13,31 +13,31 @@ body {
   text-align: center;
 }
 
-.title {
-  font-size: 48px;
+.title span:first-child {
+  font-size: 80px;
+  display: block;
+}
+
+.title span:last-child {
+  font-size: 80px;
+  display: block;
+  margin-top: -10px;
 }
 
 /* STEP 2 */
-.hidden {
-  display: none;
-}
+.hidden { display: none; }
 
 .box-screen {
   text-align: center;
 }
 
 .letter-box {
-  width: 200px;
+  width: 220px;
   cursor: pointer;
   animation: fadeIn 1.5s ease;
 }
 
-.hint {
-  opacity: 0.6;
-  margin-top: 10px;
-}
-
-/* STEP 3 */
+/* STEP 3 POPUP */
 .letter-popup {
   position: fixed;
   inset: 0;
@@ -47,23 +47,35 @@ body {
   align-items: center;
 }
 
-.letter-paper {
-  width: 320px;
-  height: 420px;
-  background: url("letterpaper.jpg") center/cover;
-  padding: 40px;
-  line-height: 1.8;
-  font-size: 15px;
+.envelope {
   position: relative;
+  width: 300px;
+  height: 220px;
 }
 
-.letter-page {
-  display: none;
+.envelope-img {
+  width: 100%;
 }
 
-.letter-page.active {
-  display: block;
+/* LETTER ANIMATION */
+.letter-paper {
+  position: absolute;
+  width: 260px;
+  height: 360px;
+  background: url("letterpaper.jpg") center/cover;
+  padding: 30px;
+  top: 40px;
+  left: 20px;
+  transform: translateY(120px);
+  transition: 1s ease;
 }
+
+.envelope.open .letter-paper {
+  transform: translateY(-140px);
+}
+
+.letter-page { display: none; }
+.letter-page.active { display: block; }
 
 .next-btn {
   position: absolute;
