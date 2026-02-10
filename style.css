@@ -11,28 +11,14 @@ body {
 /* STEP 2 */
 .hidden { display: none; }
 
-.box-screen {
-  text-align: center;
-}
-
-.letter-box {
-  width: 820px;
-  cursor: pointer;
-  animation: fadeIn 1.5s ease;
-}
-
 /* STEP 3 POPUP */
-.letter-popup {
+  .letter-popup {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.4);
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.letter-popup.show {
-  display: flex;
 }
 
 .envelope {
@@ -77,10 +63,5 @@ transform: translateY(-140px);
   font-size: 14px;
   cursor: pointer;
   text-decoration: underline;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
 }
 
