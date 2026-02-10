@@ -30,26 +30,31 @@
             width: 100%;
         }
 
-        .cassette {
-            background: linear-gradient(145deg, #1a3a52, #0d2436);
-            border-radius: 10px;
-            padding: 30px;
-            position: relative;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.4),
-                        0 4px 15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .cassette-brand {
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            color: #d4af37;
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
+    .player-container {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border-radius: 20px;
+    padding: clamp(15px, 4vw, 40px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    max-width: 600px;
+    width: 95%; /* Утсан дээр ирмэгээс нь зай авна */
+    margin: auto;
+}
+
+.cassette {
+    background: linear-gradient(145deg, #1a3a52, #0d2436);
+    border-radius: 10px;
+    padding: 30px;
+    position: relative;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.4),
+                0 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+    /* Кассетны хэлбэрийг шахахаас сэргийлнэ */
+    width: 100%;
+    aspect-ratio: 1.6 / 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
         
         .cassette-type {
             position: absolute;
@@ -72,13 +77,13 @@
             backdrop-filter: blur(10px);
         }
 
-        .song-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #4a9eff;
-            margin-bottom: 5px;
-            text-shadow: 0 0 10px rgba(74, 158, 255, 0.3);
-        }
+       .song-title {
+    font-size: clamp(14px, 4vw, 20px); /* Утсан дээр жижигснэ */
+    font-weight: bold;
+    color: #4a9eff;
+    margin-bottom: 5px;
+    text-shadow: 0 0 10px rgba(74, 158, 255, 0.3);
+}
 
         .artist-name {
             font-size: 14px;
@@ -117,17 +122,18 @@
             gap: 20px;
         }
 
-        .reel {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #e8e8e8, #a8a8a8 50%, #707070);
-            position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5),
-                        inset 0 2px 5px rgba(255,255,255,0.5),
-                        inset 0 -2px 5px rgba(0,0,0,0.3);
-            border: 3px solid #888;
-        }
+       .reel {
+    /* Утсан дээр 60px-ээс багагүй, том дэлгэц дээр 120px-ээс ихгүй */
+    width: clamp(60px, 18vw, 120px);
+    height: clamp(60px, 18vw, 120px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #e8e8e8, #a8a8a8 50%, #707070);
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5),
+                inset 0 2px 5px rgba(255,255,255,0.5);
+    border: 3px solid #888;
+    flex-shrink: 0;
+}
 
         .reel::before {
             content: '';
@@ -156,7 +162,6 @@
 
        /* Update these specific sections in your <style> tag */
 
-/* Араануудын суурь чингэлэг - төвд нь байрлуулна */
 .reel-teeth {
     position: absolute;
     width: 100%;
@@ -167,29 +172,28 @@
     justify-content: center;
     align-items: center;
 }
-
+          
 .tooth {
     position: absolute;
-    width: 6px; /* Арай зузаан болгосон */
-    height: 35px; /* Урт нь */
+    width: 5%; 
+    height: 28%; 
     background: #333;
-    /* Төв цэгийг яг дунд нь тааруулах: */
     top: 50%;
     left: 50%;
-    margin-top: -17.5px; /* Өндрийн хагас */
-    margin-left: -3px;   /* Өргөний хагас */
-    border-radius: 2px;
+    transform-origin: 0 0;
+    margin-top: -14%; /* Өндрийн хагас */
+    margin-left: -2.5%; /* Өргөний хагас */
 }
 
-/* Араа бүрийг 45 градусын зөрүүтэй, төвөөс ижил зайд тойруулж байрлуулна */
-.tooth:nth-child(1) { transform: rotate(0deg) translateY(-32px); }
-.tooth:nth-child(2) { transform: rotate(45deg) translateY(-32px); }
-.tooth:nth-child(3) { transform: rotate(90deg) translateY(-32px); }
-.tooth:nth-child(4) { transform: rotate(135deg) translateY(-32px); }
-.tooth:nth-child(5) { transform: rotate(180deg) translateY(-32px); }
-.tooth:nth-child(6) { transform: rotate(225deg) translateY(-32px); }
-.tooth:nth-child(7) { transform: rotate(270deg) translateY(-32px); }
-.tooth:nth-child(8) { transform: rotate(315deg) translateY(-32px); }
+/* Араануудын байрлал (Том жижиг дэлгэцэнд автоматаар таарна) */
+.tooth:nth-child(1) { transform: rotate(0deg) translateY(-110%); }
+.tooth:nth-child(2) { transform: rotate(45deg) translateY(-110%); }
+.tooth:nth-child(3) { transform: rotate(90deg) translateY(-110%); }
+.tooth:nth-child(4) { transform: rotate(135deg) translateY(-110%); }
+.tooth:nth-child(5) { transform: rotate(180deg) translateY(-110%); }
+.tooth:nth-child(6) { transform: rotate(225deg) translateY(-110%); }
+.tooth:nth-child(7) { transform: rotate(270deg) translateY(-110%); }
+.tooth:nth-child(8) { transform: rotate(315deg) translateY(-110%); }
         .reel.spinning .reel-teeth {
             animation: spin 2s linear infinite;
         }
@@ -406,17 +410,18 @@
     </div>
      <script>
         const songs = [
-            { title: "Unexpected Answer", artist: "Temuulen,Turmunkh", duration: 225 },
-            { title: "Zuudendee Bi", artist: "NIGHT TRAIN", duration: 198 },
-            { title: "The Pips", artist: "Our Hiding Place", duration: 243 },
-            { title: "Forever", artist: "A Sound", duration: 207 },
-            { title: "Hairiin Dursamj", artist: "Badaruugan", duration: 189 }
+            { title: "Unexpected Answer", artist: "Temuulen,Turmunkh", duration: 186, url: "UnexpectedAnswer.mp3" },
+            { title: "Zuudendee Bi", artist: "NIGHT TRAIN", duration: 347, url: "ZuudendeeBi.mp3" },
+            { title: "The Pips", artist: "Our Hiding Place", duration: 229, url: "OurHidingPlace.mp3" },
+            { title: "Forever", artist: "A Sound", duration: 266, url: "Forever.mp3" },
+            { title: "Hairiin Dursamj", artist: "Badaruugan", duration: 247, url: "hairiindursamj.mp3" }
         ];
 
         let currentSongIndex = 0;
         let isPlaying = false;
         let currentTime = 0;
         let progressInterval;
+        let audio = new Audio(); // Шинэ аудио объект
 
         const playBtn = document.getElementById('playBtn');
         const prevBtn = document.getElementById('prevBtn');
@@ -452,7 +457,7 @@
 
         function updateProgress() {
             const song = songs[currentSongIndex];
-            currentTime += 0.1;
+            currentTime = audio.currentTime;
             
             if (currentTime >= song.duration) {
                 nextSong();
@@ -465,26 +470,34 @@
         }
 
         function togglePlay() {
-            isPlaying = !isPlaying;
-            playBtn.textContent = isPlaying ? '⏸' : '▶';
-            
-            if (isPlaying) {
-                leftReel.classList.add('spinning');
-                rightReel.classList.add('spinning');
-                progressInterval = setInterval(updateProgress, 100);
-            } else {
-                leftReel.classList.remove('spinning');
-                rightReel.classList.remove('spinning');
-                clearInterval(progressInterval);
-            }
-        }
+    if (!audio.src) {
+        audio.src = songs[currentSongIndex].url;
+    }
 
-       function resetTimer() {
+    isPlaying = !isPlaying;
+    playBtn.textContent = isPlaying ? '⏸' : '▶';
+
+    if (isPlaying) {
+        audio.play(); // Хөгжим тоглуулна
+        leftReel.classList.add('spinning');
+        rightReel.classList.add('spinning');
+        progressInterval = setInterval(updateProgress, 100);
+    } else {
+        audio.pause(); // Хөгжим зогсооно
+        leftReel.classList.remove('spinning');
+        rightReel.classList.remove('spinning');
+        clearInterval(progressInterval);
+    }
+}
+         
+function resetTimer() {
     clearInterval(progressInterval);
+    audio.src = songs[currentSongIndex].url; // Шинэ дууны замыг заана
     currentTime = 0;
     progressBar.style.width = '0%';
     currentTimeEl.textContent = "0:00";
     if (isPlaying) {
+        audio.play();
         progressInterval = setInterval(updateProgress, 100);
     }
 }
