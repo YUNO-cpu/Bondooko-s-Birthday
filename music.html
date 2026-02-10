@@ -42,18 +42,19 @@
 
 .cassette {
     background: linear-gradient(145deg, #1a3a52, #0d2436);
-    border-radius: 10px;
-    padding: 30px;
+    border-radius: 12px;
+    padding: 25px; /* Зайг нь жигд болгосон */
     position: relative;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.4),
-                0 4px 15px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.05);
-    /* Кассетны хэлбэрийг шахахаас сэргийлнэ */
+                0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
     width: 100%;
-    aspect-ratio: 1.6 / 1; 
+    /* Стандарт кассетны харьцаа */
+    aspect-ratio: 1.5 / 1; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center; /* Бүх зүйлийг голлуулна */
+    gap: 15px;
 }
         
         .cassette-type {
@@ -66,16 +67,17 @@
         }
 
         .cassette-label {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
-            margin-top: 30px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-        }
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: clamp(10px, 3vw, 20px);
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    /* Дууны нэрийг кассетны дээд хэсэгт байрлуулна */
+    width: 90%;
+    margin: 0 auto;
+}
 
        .song-title {
     font-size: clamp(14px, 4vw, 20px); /* Утсан дээр жижигснэ */
@@ -90,17 +92,15 @@
             color: rgba(255,255,255,0.6);
         }
         
-        .cassette-info {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #4a9eff;
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
-        }
+       .cassette-info {
+    position: static; /* Төвөөсөө хөдлөхгүй болгох */
+    transform: none;
+    text-align: center;
+    color: rgba(74, 158, 255, 0.6);
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-top: 5px;
+}
         
         .cassette-subtitle {
             position: absolute;
@@ -360,10 +360,7 @@
 <body>
     <div class="player-container">
         <div class="cassette">
-            <div class="cassette-brand">FUJI</div>
-            <div class="cassette-type">TYPE II HIGH(CrO₂) POSITION</div>
-            <div class="cassette-subtitle">Ideal for High Quality Music Recordings</div>
-            
+           
             <div class="cassette-label">
                 <div class="song-title" id="currentSong">Unexpected Answer</div>
                 <div class="artist-name" id="currentArtist">Temuulen,Turmunkh</div>
