@@ -4,6 +4,330 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cassette Player</title>
+      <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+        }
+
+        .player-container {
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .cassette {
+            background: linear-gradient(145deg, #1a3a52, #0d2436);
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.4),
+                        0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .cassette-brand {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            color: #d4af37;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .cassette-type {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: rgba(255,255,255,0.6);
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .cassette-label {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .song-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4a9eff;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(74, 158, 255, 0.3);
+        }
+
+        .artist-name {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .cassette-info {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #4a9eff;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
+        }
+        
+        .cassette-subtitle {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.5);
+            font-size: 9px;
+            font-style: italic;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .reels-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            gap: 20px;
+        }
+
+        .reel {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #e8e8e8, #a8a8a8 50%, #707070);
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5),
+                        inset 0 2px 5px rgba(255,255,255,0.5),
+                        inset 0 -2px 5px rgba(0,0,0,0.3);
+            border: 3px solid #888;
+        }
+
+        .reel::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 30% 30%, #555, #222);
+            border-radius: 50%;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+        }
+        
+        .reel::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+
+        .reel-teeth {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .tooth {
+            position: absolute;
+            width: 3px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            top: 50%;
+            left: 50%;
+            transform-origin: center -40px;
+            border-radius: 1px;
+        }
+
+        .tooth:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
+        .tooth:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg); }
+        .tooth:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg); }
+        .tooth:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg); }
+        .tooth:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg); }
+        .tooth:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg); }
+        .tooth:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg); }
+        .tooth:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg); }
+
+        .reel.spinning .reel-teeth {
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .tape-line {
+            flex: 1;
+            height: 4px;
+            background: #2a1810;
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4),
+                        inset 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        .control-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .control-btn.play {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            background: linear-gradient(145deg, #2a5a7a, #1a3a52);
+            box-shadow: 0 4px 10px rgba(74, 158, 255, 0.3);
+        }
+
+        .control-btn.play:hover {
+            background: linear-gradient(145deg, #3a6a8a, #2a4a62);
+            box-shadow: 0 6px 15px rgba(74, 158, 255, 0.5);
+        }
+
+        .progress-container {
+            margin-top: 20px;
+            background: #1a1a1a;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #2a5a7a, #4a9eff);
+            width: 0%;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .playlist {
+            margin-top: 30px;
+            background: #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .playlist-title {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .song-item {
+            background: #1a1a1a;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .song-item:hover {
+            background: #3a3a3a;
+            transform: translateX(5px);
+        }
+
+        .song-item.active {
+            background: linear-gradient(90deg, rgba(42, 90, 122, 0.3), rgba(74, 158, 255, 0.2));
+            border-left: 3px solid #4a9eff;
+            box-shadow: 0 0 10px rgba(74, 158, 255, 0.2);
+        }
+
+        .song-info {
+            color: #fff;
+        }
+
+        .song-item-title {
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .song-item-artist {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .song-duration {
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
     </head>
 <body>
     <div class="player-container">
@@ -13,8 +337,8 @@
             <div class="cassette-subtitle">Ideal for High Quality Music Recordings</div>
             
             <div class="cassette-label">
-                <div class="song-title" id="currentSong">Summer Vibes</div>
-                <div class="artist-name" id="currentArtist">Retro Beats</div>
+                <div class="song-title" id="currentSong">Unexpected Answer</div>
+                <div class="artist-name" id="currentArtist">Temuulen,Turmunkh</div>
             </div>
             
             <div class="reels-container">
@@ -72,5 +396,163 @@
             <div id="playlistContainer"></div>
         </div>
     </div>
+     <script>
+        const songs = [
+            { title: "Unexpected Answer", artist: "Temuulen,Turmunkh", duration: 225 },
+            { title: "Zuudendee Bi", artist: "NIGHT TRAIN", duration: 198 },
+            { title: "The Pips", artist: "Our Hiding Place", duration: 243 },
+            { title: "Forever", artist: "A Sound", duration: 207 },
+            { title: "Hairiin Dursamj", artist: "Badaruugan", duration: 189 }
+        ];
+
+        let currentSongIndex = 0;
+        let isPlaying = false;
+        let currentTime = 0;
+        let progressInterval;
+
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const rewindBtn = document.getElementById('rewindBtn');
+        const forwardBtn = document.getElementById('forwardBtn');
+        const leftReel = document.getElementById('leftReel');
+        const rightReel = document.getElementById('rightReel');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeEl = document.getElementById('currentTime');
+        const totalTimeEl = document.getElementById('totalTime');
+        const currentSongEl = document.getElementById('currentSong');
+        const currentArtistEl = document.getElementById('currentArtist');
+        const playlistContainer = document.getElementById('playlistContainer');
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function updateDisplay() {
+            const song = songs[currentSongIndex];
+            currentSongEl.textContent = song.title;
+            currentArtistEl.textContent = song.artist;
+            totalTimeEl.textContent = formatTime(song.duration);
+            
+            // Update active song in playlist
+            document.querySelectorAll('.song-item').forEach((item, index) => {
+                item.classList.toggle('active', index === currentSongIndex);
+            });
+        }
+
+        function updateProgress() {
+            const song = songs[currentSongIndex];
+            currentTime += 0.1;
+            
+            if (currentTime >= song.duration) {
+                nextSong();
+                return;
+            }
+            
+            const progress = (currentTime / song.duration) * 100;
+            progressBar.style.width = `${progress}%`;
+            currentTimeEl.textContent = formatTime(currentTime);
+        }
+
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            playBtn.textContent = isPlaying ? '⏸' : '▶';
+            
+            if (isPlaying) {
+                leftReel.classList.add('spinning');
+                rightReel.classList.add('spinning');
+                progressInterval = setInterval(updateProgress, 100);
+            } else {
+                leftReel.classList.remove('spinning');
+                rightReel.classList.remove('spinning');
+                clearInterval(progressInterval);
+            }
+        }
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            currentTime = 0;
+            progressBar.style.width = '0%';
+            updateDisplay();
+        }
+
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            currentTime = 0;
+            progressBar.style.width = '0%';
+            updateDisplay();
+        }
+
+        function skipTime(seconds) {
+            const song = songs[currentSongIndex];
+            currentTime = Math.max(0, Math.min(currentTime + seconds, song.duration));
+            const progress = (currentTime / song.duration) * 100;
+            progressBar.style.width = `${progress}%`;
+            currentTimeEl.textContent = formatTime(currentTime);
+        }
+
+        function loadSong(index) {
+            if (currentSongIndex === index && isPlaying) {
+                togglePlay();
+                return;
+            }
+            
+            const wasPlaying = isPlaying;
+            if (isPlaying) {
+                togglePlay();
+            }
+            
+            currentSongIndex = index;
+            currentTime = 0;
+            progressBar.style.width = '0%';
+            updateDisplay();
+            
+            if (wasPlaying) {
+                togglePlay();
+            }
+        }
+
+        // Render playlist
+        songs.forEach((song, index) => {
+            const songItem = document.createElement('div');
+            songItem.className = 'song-item';
+            if (index === 0) songItem.classList.add('active');
+            
+            songItem.innerHTML = `
+                <div class="song-info">
+                    <div class="song-item-title">${song.title}</div>
+                    <div class="song-item-artist">${song.artist}</div>
+                </div>
+                <div class="song-duration">${formatTime(song.duration)}</div>
+            `;
+            
+            songItem.addEventListener('click', () => loadSong(index));
+            playlistContainer.appendChild(songItem);
+        });
+
+        // Event listeners
+        playBtn.addEventListener('click', togglePlay);
+        nextBtn.addEventListener('click', () => {
+            nextSong();
+            if (isPlaying) {
+                clearInterval(progressInterval);
+                progressInterval = setInterval(updateProgress, 100);
+            }
+        });
+        prevBtn.addEventListener('click', () => {
+            prevSong();
+            if (isPlaying) {
+                clearInterval(progressInterval);
+                progressInterval = setInterval(updateProgress, 100);
+            }
+        });
+        rewindBtn.addEventListener('click', () => skipTime(-10));
+        forwardBtn.addEventListener('click', () => skipTime(10));
+
+        // Initialize
+        updateDisplay();
+    </script>
 </body>
 </html>
