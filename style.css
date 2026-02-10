@@ -16,7 +16,7 @@ body {
 }
 
 .letter-box {
-  width: 420px;
+  width: 820px;
   cursor: pointer;
   animation: fadeIn 1.5s ease;
 }
@@ -39,7 +39,7 @@ body {
   transform: scale(0.9);
   position: relative;
   width: 300px;
-  height: 420px;
+  height: 820px;
 }
 
 .envelope-img {
