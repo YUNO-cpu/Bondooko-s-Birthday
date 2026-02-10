@@ -1,25 +1,25 @@
-const gift = document.getElementById("gift");
-const letter = document.getElementById("letter");
-const pages = document.querySelectorAll(".page");
-let currentPage = 0;
-
-// 4 секундийн дараа зураг гарч ирнэ
+// 4 секунд дараа box гарч ирнэ
 setTimeout(() => {
-  gift.classList.add("show");
+  document.getElementById("cardScreen").style.display = "none";
+  document.getElementById("boxScreen").classList.remove("hidden");
 }, 4000);
 
-// Зураг дээр дарахад захиа гарна
 function openLetter() {
-  letter.style.display = "block";
-  gift.style.display = "none";
+  document.getElementById("letterPopup").classList.remove("hidden");
 }
 
-// Next button
+let currentPage = 0;
+const pages = document.querySelectorAll(".letter-page");
+
 function nextPage() {
   pages[currentPage].classList.remove("active");
   currentPage++;
 
   if (currentPage < pages.length) {
     pages[currentPage].classList.add("active");
+  } else {
+    // дууссан → шинэ page
+    window.location.href = "music.html";
   }
 }
+
