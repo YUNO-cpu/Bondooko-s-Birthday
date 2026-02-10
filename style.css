@@ -78,14 +78,29 @@ body {
 
 .letter-page.active { display: block; }
 
-.next-btn {
+.button-group {
   position: absolute;
-  bottom: 25px;
-  right: 25px;
+  bottom: 50px; /* Ингэж дээшлүүлнэ */
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center; /* Төвд нь зэрэгцүүлнэ */
+  gap: 15px; /* Хоорондын зай */
+  z-index: 30;
+}
+
+.next-btn, .back-btn {
   background: #8b4513;
   color: white;
   border: none;
-  padding: 8px 18px;
+  padding: 8px 20px;
   border-radius: 20px;
+  font-size: 14px;
   cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.back-btn {
+  background: #a0522d; /* Буцах товч арай өөр өнгө */
+  display: none; /* Эхний хуудас дээр нуух */
 }
