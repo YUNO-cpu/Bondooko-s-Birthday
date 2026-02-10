@@ -6,62 +6,77 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'Georgia', serif;
+  overflow: hidden; /* Илүү гарсан хэсгийг нуух */
 }
 
-/* STEP 2 */
-.hidden { display: none; }
+.hidden { display: none !important; }
 
-/* STEP 3 POPUP */
-  .letter-popup {
+.letter-popup {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.5); /* Бага зэрэг бараан болгов */
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .envelope {
-  transform: scale(0.9);
   position: relative;
-  width: 600px;
-  height: 1640px;
+  width: 400px; /* Дугтуйн өргөн */
+  height: 280px; /* Дугтуйн өндөр - хэт их байсныг засав */
+  cursor: pointer;
+  transition: transform 0.5s ease;
 }
 
 .envelope-img {
   width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2; /* Захианаасаа дээгүүр харагдана */
 }
 
 /* LETTER ANIMATION */
 .letter-paper {
   position: absolute;
-  width: 260px;
-  height: 360px;
-  background: url("letterpaper.jpg") center/cover;
+  width: 340px; /* Дугтуйнаасаа арай нарийн */
+  height: 400px; /* Захианы урт */
+  background: #fdf5e6 url("letterpaper.jpg") center/cover; /* Зураг ачааллахгүй бол цайвар шар өнгө */
   padding: 30px;
-  top: 40px;
-  left: 20px;
-  transform: translateY(220px);
-  transition: 1s ease;
+  box-sizing: border-box;
+  left: 30px;
+  top: 0;
+  z-index: 1; /* Эхлээд дугтуйн ард байна */
+  transform: translateY(50px); /* Дугтуй дотор нуугдсан байрлал */
   opacity: 0;
+  transition: transform 1s ease, opacity 0.8s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
+/* Захиа дээшээ гарч ирэх */
 .envelope.open .letter-paper {
-transform: translateY(-140px);
+  transform: translateY(-250px); /* Дээшээ сугарч гарч ирэх хэмжээ */
   opacity: 1;
+  z-index: 3; /* Дугтуйнхаа дээр гарч ирнэ */
 }
 
-.letter-page { display: none; }
+.letter-page { 
+  display: none; 
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
 .letter-page.active { display: block; }
 
 .next-btn {
   position: absolute;
   bottom: 15px;
   right: 25px;
-  background: none;
+  background: #8b4513; /* Товчлуурыг харагддаг болгов */
+  color: white;
   border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
-  text-decoration: underline;
 }
-
