@@ -1,65 +1,83 @@
 body {
   margin: 0;
-  min-height: 100vh;
+  height: 100vh;
   background: url("background.jpg") center/cover no-repeat;
-  font-family: 'Playfair Display', serif;
-}
-
-.container {
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Georgia', serif;
+}
+
+/* STEP 1 */
+.card-screen {
   text-align: center;
 }
 
 .title {
-  font-size: 42px;
-  margin-bottom: 40px;
+  font-size: 48px;
 }
 
-.gift {
-  width: 200px;
-  cursor: pointer;
-  transition: opacity 1s ease, transform 1s ease;
-}
-
+/* STEP 2 */
 .hidden {
-  opacity: 0;
-  transform: scale(0.8);
-}
-
-.gift.show {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Letter */
-.letter {
-  width: 300px;
-  min-height: 220px;
-  background: #f5f1e6;
-  padding: 25px;
-  margin-top: 30px;
-  display: block;
-  font-family: 'Special Elite', cursive;
-  line-height: 1.7;
-  position: relative;
-}
-
-.page {
   display: none;
 }
 
-.page.active {
+.box-screen {
+  text-align: center;
+}
+
+.letter-box {
+  width: 200px;
+  cursor: pointer;
+  animation: fadeIn 1.5s ease;
+}
+
+.hint {
+  opacity: 0.6;
+  margin-top: 10px;
+}
+
+/* STEP 3 */
+.letter-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-paper {
+  width: 320px;
+  height: 420px;
+  background: url("letterpaper.jpg") center/cover;
+  padding: 40px;
+  line-height: 1.8;
+  font-size: 15px;
+  position: relative;
+}
+
+.letter-page {
+  display: none;
+}
+
+.letter-page.active {
   display: block;
 }
 
-.next {
-  display: block;
-  margin-top: 15px;
+.next-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+  background: none;
+  border: none;
   font-size: 14px;
   cursor: pointer;
   text-decoration: underline;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
