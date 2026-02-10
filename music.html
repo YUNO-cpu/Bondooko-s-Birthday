@@ -154,34 +154,38 @@
             border: 2px solid rgba(0,0,0,0.1);
         }
 
-        .reel-teeth {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
+       /* Update these specific sections in your <style> tag */
 
-        .tooth {
-            position: absolute;
-            width: 3px;
-            height: 40px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
-            top: 50%;
-            left: 50%;
-            transform-origin: center -40px;
-            border-radius: 1px;
-        }
+.reel-teeth {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease; /* Smooth start/stop */
+}
 
-        .tooth:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
-        .tooth:nth-child(2) { transform: translate(-50%, -50%) rotate(45deg); }
-        .tooth:nth-child(3) { transform: translate(-50%, -50%) rotate(90deg); }
-        .tooth:nth-child(4) { transform: translate(-50%, -50%) rotate(135deg); }
-        .tooth:nth-child(5) { transform: translate(-50%, -50%) rotate(180deg); }
-        .tooth:nth-child(6) { transform: translate(-50%, -50%) rotate(225deg); }
-        .tooth:nth-child(7) { transform: translate(-50%, -50%) rotate(270deg); }
-        .tooth:nth-child(8) { transform: translate(-50%, -50%) rotate(315deg); }
+.tooth {
+    position: absolute;
+    width: 4px; /* Slightly thicker for visibility */
+    height: 20px; /* Shortened to fit inside the reel */
+    background: #333;
+    top: 50%;
+    left: 50%;
+    /* The magic fix: center the rotation point */
+    transform-origin: 0 0; 
+    margin-top: -10px; /* Half of height to center */
+}
 
+/* Adjust the rotation of each tooth so they fan out from the center */
+.tooth:nth-child(1) { transform: rotate(0deg) translate(0, -35px); }
+.tooth:nth-child(2) { transform: rotate(45deg) translate(0, -35px); }
+.tooth:nth-child(3) { transform: rotate(90deg) translate(0, -35px); }
+.tooth:nth-child(4) { transform: rotate(135deg) translate(0, -35px); }
+.tooth:nth-child(5) { transform: rotate(180deg) translate(0, -35px); }
+.tooth:nth-child(6) { transform: rotate(225deg) translate(0, -35px); }
+.tooth:nth-child(7) { transform: rotate(270deg) translate(0, -35px); }
+.tooth:nth-child(8) { transform: rotate(315deg) translate(0, -35px); }
         .reel.spinning .reel-teeth {
             animation: spin 2s linear infinite;
         }
