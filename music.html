@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>For You</title>
-</head>
-<body style="background:black; display:flex; justify-content:center; align-items:center;">
-  <audio src="song.mp3" autoplay></audio>
-  <h1 style="color:white">For You</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cassette Player</title>
+    </head>
+<body>
+    <div class="player-container">
+        <div class="cassette">
+            <div class="cassette-brand">FUJI</div>
+            <div class="cassette-type">TYPE II HIGH(CrO₂) POSITION</div>
+            <div class="cassette-subtitle">Ideal for High Quality Music Recordings</div>
+            
+            <div class="cassette-label">
+                <div class="song-title" id="currentSong">Summer Vibes</div>
+                <div class="artist-name" id="currentArtist">Retro Beats</div>
+            </div>
+            
+            <div class="reels-container">
+                <div class="reel" id="leftReel">
+                    <div class="reel-teeth">
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                    </div>
+                </div>
+                
+                <div class="tape-line"></div>
+                
+                <div class="reel" id="rightReel">
+                    <div class="reel-teeth">
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cassette-info">DR-II 90</div>
+        </div>
+
+        <div class="controls">
+            <button class="control-btn" id="prevBtn" title="Previous">⏮</button>
+            <button class="control-btn" id="rewindBtn" title="Rewind">◃◃</button>
+            <button class="control-btn play" id="playBtn" title="Play/Pause">▶</button>
+            <button class="control-btn" id="forwardBtn" title="Fast Forward">▹▹</button>
+            <button class="control-btn" id="nextBtn" title="Next">⏭</button>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="time-display">
+            <span id="currentTime">0:00</span>
+            <span id="totalTime">3:45</span>
+        </div>
+
+        <div class="playlist">
+            <div class="playlist-title">Mixtape Selection</div>
+            <div id="playlistContainer"></div>
+        </div>
+    </div>
 </body>
 </html>
