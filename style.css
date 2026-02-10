@@ -14,72 +14,69 @@ body {
 .letter-popup {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6); /* Бага зэрэг бараан болгож тодруулав */
+  background: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 100;
-  backdrop-filter: blur(3px); /* Ар талыг бага зэрэг бүрсгэнэ */
+  backdrop-filter: blur(4px);
 }
 
 .envelope {
   position: relative;
   width: 400px;
-  height: 280px; /* Энэ өндөр дугтуй харагдахад хангалттай байх ёстой */
+  height: 280px;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .envelope-img {
   width: 100%;
   height: auto;
-  display: block;
   position: relative;
-  z-index: 5; /* Захианы цаасны өмнө харагдана */
+  z-index: 5;
 }
 
 .letter-paper {
   position: absolute;
-  width: 340px; 
-  height: 440px; 
+  width: 340px;
+  height: 460px;
   background: #fdf5e6 url("letterpaper.jpg") center/cover;
-  padding: 40px 25px;
+  padding: 40px 30px;
   box-sizing: border-box;
-  z-index: 1; /* Эхлээд дугтуйн ард байна */
+  left: 30px;
+  top: 10px;
+  z-index: 1;
   opacity: 0;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   border-radius: 5px;
 }
 
-/* ЗАХИА НЭЭГДЭХ ҮЕД */
+/* Нээгдэх үед төвд ирэх */
 .envelope.open .letter-paper {
   opacity: 1;
-  z-index: 20; /* Нээгдэх үед бүх зүйлээс дээгүүр гарна */
-  transform: translate(-50%, -50%) scale(1.1); 
-  position: fixed; /* Дэлгэцийн төвд барихын тулд */
+  z-index: 20;
+  transform: translate(-50%, -50%) scale(1.1);
+  position: fixed;
   left: 50%;
   top: 50%;
+  margin: 0;
 }
+
+.letter-content { text-align: center; }
 
 .letter-page {
   display: none;
-  text-align: center;
   font-size: 18px;
   line-height: 1.6;
-  color: #4b3621;
+  color: #3e2723;
   font-style: italic;
 }
 
-.letter-page.active { 
-  display: block; 
-}
+.letter-page.active { display: block; }
 
 .next-btn {
   position: absolute;
@@ -90,7 +87,5 @@ body {
   border: none;
   padding: 8px 18px;
   border-radius: 20px;
-  font-size: 14px;
   cursor: pointer;
-  z-index: 21;
 }
