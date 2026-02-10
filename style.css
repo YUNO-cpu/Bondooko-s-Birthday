@@ -42,12 +42,17 @@ body {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.4);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
 
+.letter-popup.show {
+  display: flex;
+}
+
 .envelope {
+  transform: scale(0.9);
   position: relative;
   width: 300px;
   height: 220px;
@@ -66,12 +71,14 @@ body {
   padding: 30px;
   top: 40px;
   left: 20px;
-  transform: translateY(120px);
+  transform: translateY(220px);
   transition: 1s ease;
+  opacity: 0;
 }
 
 .envelope.open .letter-paper {
-  transform: translateY(-140px);
+transform: translateY(-140px);
+  opacity: 1;
 }
 
 .letter-page { display: none; }
