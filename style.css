@@ -11,15 +11,16 @@ body {
 /* STEP 1 */
 .card-screen {
   text-align: center;
+  transform: translateY(-80px);
 }
 
 .title span:first-child {
-  font-size: 80px;
+  font-size: 110px;
   display: block;
 }
 
 .title span:last-child {
-  font-size: 80px;
+  font-size: 90px;
   display: block;
   margin-top: -10px;
 }
